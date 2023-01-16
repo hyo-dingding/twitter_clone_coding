@@ -1,5 +1,5 @@
 import express from "express";
-import "express-async-error"; //
+import "express-async-errors";
 import cors from "cors";
 import morgan from "morgan"; // 디버깅
 import helmet from "helmet"; // 보안
