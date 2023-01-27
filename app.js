@@ -5,6 +5,7 @@ import morgan from "morgan"; // 디버깅
 import helmet from "helmet"; // 보안
 
 import tweetsRouter from "./router/tweets.js";
+import authRouter from "./router/auth.js";
 
 const app = express();
 app.use(express.json());
@@ -13,11 +14,13 @@ app.use(morgan("tiny"));
 app.use(helmet());
 
 app.use("/tweets", tweetsRouter);
+app.use("/auth", authRouter);
 
 app.use((req, res, next) => {
     res.sendStatus(404); // not found 지원하지 않는 API일 때
 });
 
+// 에러처리
 app.use((error, req, res, next) => {
     console.error(error);
     console.log(500);
