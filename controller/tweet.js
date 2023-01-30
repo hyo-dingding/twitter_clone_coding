@@ -2,7 +2,7 @@ import * as tweetRepository from "../data/tweet.js";
 
 export async function getTweets(req, res) {
     const username = req.query.username;
-    console.log(username);
+
     const data = await (username //
         ? tweetRepository.getAllByUsername(username)
         : tweetRepository.getAll());
@@ -20,8 +20,8 @@ export async function getTweet(req, res, next) {
 }
 
 export async function createTweet(req, res, next) {
-    const { text, name, username } = req.body;
-    const tweet = await tweetRepository.create(text, name, username);
+    const { text } = req.body;
+    const tweet = await tweetRepository.create(text, req.userId);
     res.status(201).json(tweet);
 }
 
