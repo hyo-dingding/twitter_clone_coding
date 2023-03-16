@@ -1,6 +1,14 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize } from "../db/database.js";
+import Mongoose from "mongoose";
 
+const userSchema = new Mongoose.Schema({
+    username: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    url: String,
+});
 export const User = sequelize.define(
     "user",
     {
